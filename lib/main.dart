@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './screens/tab_screen.dart';
+import 'package:ino_fluter/screens/projects.dart';
+import 'package:ino_fluter/screens/timeline.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
             )),
       ),
       routes: {
-        '/': (context) => TabsScreen(),
+        '/': (context) => Projects(),
+        '/timeline': (context) => Timeline(),
       },
     );
   }

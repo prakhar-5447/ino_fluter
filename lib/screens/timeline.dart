@@ -5,6 +5,10 @@ class Timeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [Text("qwqwqwqwqw")],);
+    return Scaffold(
+        appBar: AppBar(),
+        body: Column(
+          children:const [Text("qwqwqwqwqw")],
+        ));
   }
 }

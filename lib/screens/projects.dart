@@ -89,14 +89,14 @@ class _ProjectsState extends State<Projects> {
                         leading: const Icon(
                           Icons.work,
                           size: 45,
-                          color: Color.fromARGB(227, 3, 133, 255),
+                          color: Color.fromRGBO(227, 3, 133, 255),
                         ),
                         title: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Text(
                             myProject[index].title,
                             style: const TextStyle(
-                                color: Color.fromARGB(228, 255, 3, 3),
+                                color: Color.fromRGBO(228, 255, 3, 3),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18),
                           ),

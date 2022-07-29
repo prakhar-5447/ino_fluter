@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:ino_fluter/providers/project_provider.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class NewProject extends StatefulWidget {
-  final Function add;
+  final add;
 
   NewProject(this.add);
 
@@ -24,10 +26,11 @@ class _NewProjectState extends State<NewProject> {
     if (enteredTitle.isEmpty || enteredDesc.isEmpty || _selectedDate == null) {
       return;
     }
-
     widget.add(
       enteredTitle,
-      (enteredTitle + "_" + DateFormat('dd-mm-yyyy').format(_selectedDate)).hashCode.toString(),
+      (enteredTitle + "_" + DateFormat('dd-mm-yyyy').format(_selectedDate))
+          .hashCode
+          .toString(),
       enteredDesc,
       _selectedDate,
     );

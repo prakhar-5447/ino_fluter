@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ino_fluter/providers/project_provider.dart';
 import 'package:ino_fluter/screens/add_project.dart';
 import 'package:ino_fluter/screens/timeline.dart';
 import 'package:intl/intl.dart';
 import 'package:ino_fluter/models/project.dart';
+import 'package:provider/provider.dart';
 
 class Projects extends StatefulWidget {
   const Projects({Key? key}) : super(key: key);
@@ -12,43 +14,11 @@ class Projects extends StatefulWidget {
 }
 
 class _ProjectsState extends State<Projects> {
-  final List<Project> myProject = [
-    Project(
-        "React",
-        "1",
-        "The most important library is intl. It defines the Intl class, with the default locale and methods for accessing most of the internationalization mechanisms. This library also defines the DateFormat, NumberFormat, and BidiFormatter classes.",
-        DateTime.now()),
-    Project(
-        "Node",
-        "2",
-        "The most important library is intl. It defines the Intl class, with the default locale and methods for accessing most of the internationalization mechanisms. This library also defines the DateFormat, NumberFormat, and BidiFormatter classes.",
-        DateTime.now()),
-    Project(
-        "Angular",
-        "3",
-        "The most important library is intl. It defines the Intl class, with the default locale and methods for accessing most of the internationalization mechanisms. This library also defines the DateFormat, NumberFormat, and BidiFormatter classes.",
-        DateTime.now()),
-    Project(
-        "Vue.js",
-        "4",
-        "The most important library is intl. It defines the Intl class, with the default locale and methods for accessing most of the internationalization mechanisms. This library also defines the DateFormat, NumberFormat, and BidiFormatter classes.",
-        DateTime.now()),
-  ];
-
-  void _add(String title, String id, String desc, DateTime date) {
-    final newProject = Project(
-      title,
-      id,
-      desc,
-      date,
-    );
-    setState(() {
-      myProject.add(newProject);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final List<Project> myProject =
+        Provider.of<ProductData>(context, listen: true).myProject;
+
     void _addNewProject(BuildContext ctx) {
       showModalBottomSheet(
         context: ctx,
@@ -56,7 +26,8 @@ class _ProjectsState extends State<Projects> {
           return GestureDetector(
             onTap: () {},
             behavior: HitTestBehavior.opaque,
-            child: NewProject(_add),
+            child:
+                NewProject(Provider.of<ProductData>(context, listen: true).add),
           );
         },
       );
